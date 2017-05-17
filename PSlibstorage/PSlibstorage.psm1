@@ -17,7 +17,8 @@ $response = Invoke-RestMethod -Uri $uri -Method $Method  -SkipCertificateCheck -
 
 if ($names = $response |Get-Member -MemberType NoteProperty )
     {
-        expand-libstorageproperty -prop_names $names -prop_elements $response
+       $output =  expand-libstorageproperty -prop_names $names -prop_elements $response
+       $output
     }
 
 }
@@ -43,5 +44,5 @@ $output_element = @()
         }      
 
     }
-Write-Output $output_element    
+return  $output_element    
 }
