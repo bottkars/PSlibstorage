@@ -1,4 +1,22 @@
 
+
+function Get-libStorageVolumes
+{
+    [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
+    #[OutputType([int])]
+    Param
+    (
+        # Param1 help description
+        [Parameter(Mandatory=$true)]$libstoragehost,
+        [Parameter(Mandatory=$false)]$libstorageport = 7980
+		#[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
+		#[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
+		#[Parameter(Mandatory=$false)]$Body
+    )
+$uri = "https://$($libstoragehost):$($libstorageport)/volumes"
+invoke-libStorageRequest -uri $uri 
+}  
+
 function invoke-libStorageRequest
 {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
