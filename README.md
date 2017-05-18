@@ -1,0 +1,1 @@
+# this is the first draft of PSlibstorage, a powershell interface to DEE|EMC libstorage engine 
