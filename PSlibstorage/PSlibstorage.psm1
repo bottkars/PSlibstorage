@@ -1,15 +1,10 @@
 
 function Get-libStorageVersion {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
     $uri = "https://$($libstoragehost):$($libstorageport)/help/$myself"
@@ -17,15 +12,10 @@ function Get-libStorageVersion {
 }
 function Get-libStorageSnapshots {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
     $uri = "https://$($libstoragehost):$($libstorageport)/help/$myself"
@@ -35,15 +25,10 @@ function Get-libStorageSnapshots {
 
 function Get-libStorageVolumes {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
     $uri = "https://$($libstoragehost):$($libstorageport)/$myself"
@@ -51,15 +36,10 @@ function Get-libStorageVolumes {
 }
 function Get-libStorageExecutors {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
     $uri = "https://$($libstoragehost):$($libstorageport)/$myself"
@@ -67,15 +47,10 @@ function Get-libStorageExecutors {
 }
 function Get-libStorageTasks {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
     $uri = "https://$($libstoragehost):$($libstorageport)/$myself"
@@ -87,12 +62,8 @@ function Get-libStorageServices {
     #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
     $uri = "https://$($libstoragehost):$($libstorageport)/$myself"
@@ -100,15 +71,10 @@ function Get-libStorageServices {
 }
 function Get-libStorageFunctions {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
         [Parameter(Mandatory = $false)]$libstorageport = 7980
-        #[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
-        #[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
-        #[Parameter(Mandatory=$false)]$Body
     )
     $uri = "https://$($libstoragehost):$($libstorageport)"
     invoke-libStorageRequest -uri $uri 
@@ -116,10 +82,8 @@ function Get-libStorageFunctions {
 
 function invoke-libStorageRequest {
     [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
-    #[OutputType([int])]
     Param
     (
-        # Param1 help description
         [Parameter(Mandatory = $true)]$uri,
         [Parameter(Mandatory = $false)][ValidateSet('Get', 'Delete', 'Put', 'Post', 'Patch')]$Method = 'Get',
         [Parameter(Mandatory = $false)]$ContentType = 'application/json;charset=utf-8', 
@@ -153,7 +117,6 @@ function expand-libstorageproperty {
         else {
             $output_element += $elements
         }      
-
     }
     Write-Output $output_element    
 }
