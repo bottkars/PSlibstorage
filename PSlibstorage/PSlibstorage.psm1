@@ -1,4 +1,21 @@
 
+function Get-libStorageVersion
+{
+    [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
+    #[OutputType([int])]
+    Param
+    (
+        # Param1 help description
+        [Parameter(Mandatory=$true,Position = 1)]$libstoragehost,
+        [Parameter(Mandatory=$false)]$libstorageport = 7980
+		#[Parameter(Mandatory=$false)][ValidateSet('Get','Delete','Put','Post','Patch')]$Method = 'Get',
+		#[Parameter(Mandatory=$false)]$ContentType = 'application/json;charset=utf-8', 
+		#[Parameter(Mandatory=$false)]$Body
+    )
+$Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
+$uri = "https://$($libstoragehost):$($libstorageport)/help/$myself"
+invoke-libStorageRequest -uri $uri 
+}
 
 function Get-libStorageVolumes
 {
