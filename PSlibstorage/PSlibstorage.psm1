@@ -102,7 +102,7 @@ function invoke-libStorageRequest
 $response = Invoke-RestMethod -Uri $uri -Method $Method  -SkipCertificateCheck -ContentType $ContentType
 
 
-if ($names = $response |Get-Member -MemberType NoteProperty )
+if ($names = $response |Get-Member -MemberType NoteProperty | where Definition -match "System.Management.Automation.PSCustomObject")
     {
         expand-libstorageproperty -prop_names $names -prop_elements $response
     }
