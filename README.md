@@ -13,6 +13,47 @@ libStorage is an open source, platform agnostic, storage provisioning and orches
 
 * Powershell CORE 6.0.0.-beta 1 is required ( includes -skipssl for webrequests and PShost os detection )
 * Windows, Linux or OS/X running Powershell
+* libstorage host with running libstorage server ( example config)
+ ```YAML
+ 
+libstorage:
+ host: unix:///var/run/libstorage/localhost.sock
+ embedded: true
+ client:
+  tls: true
+ service: scaleio
+ integration:
+    volume:
+      operations:
+        mount:
+          preempt: true
+        unmount:
+          ignoreUsedCount: true
+ server:
+    endpoints:
+      sock:
+        address: unix:///var/run/libstorage/localhost.sock
+      private:
+        address: tcp://127.0.0.1:7979
+      public:
+        address: tcp://:7980
+        tls:
+         certFile: /etc/libstorage/tls/libstorage.crt
+         keyFile: /etc/libstorage/tls/libstorage.key
+    services:
+      scaleio:
+        driver: scaleio
+        scaleio:
+         endpoint: https://192.168.2.203:443/api
+         insecure: true
+         userName: admin
+         password: Password123!
+         systemName: ScaleIO@labbuildr
+         protectionDomainName: PD_labbuildr
+         storagePoolName: SP_labbuildr
+
+
+ ```
 
 ## getting started
 as long as 0.1 is not reached, please clone the repo and manually run 
