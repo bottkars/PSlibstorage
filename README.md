@@ -23,11 +23,12 @@ import-module pPSlibStaorage.psm1
 
 ## Roadmap
 * current WIP: baseline modules for Get functions and Streamlining of output
-  - ScaleIO validation []
-  - ISILON validation []
-  - Azure Validation []
-* v0.1 with installable module []
-  - appveyor []
-  - readthedocs []
-* v0.2 with user/pass and token based auth []
-__
+  - [] ScaleIO validation
+  - [] ISILON validation 
+  - [] Azure Validation 
+  
+* v0.1 with installable module
+  -  [] appveyor
+  -  [] readthedocs
+* v0.2 with user/pass and token based auth
+_
