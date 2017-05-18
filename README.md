@@ -3,7 +3,7 @@
 this is the first draft of PSlibstorage, a powershell interface to DELL|EMC [libstorage](http://libstorage.readthedocs.io) framework
 libStorage is an open source, platform agnostic, storage provisioning and orchestration framework, model, and API.
 
-
+![image](https://cloud.githubusercontent.com/assets/8255007/26189688/1ea51368-3ba6-11e7-93a8-476edeba6c5b.png)
 
 ![image](https://cloud.githubusercontent.com/assets/8255007/26189019/c8065ff6-3ba2-11e7-9c1b-4e131a31d106.png)
 
