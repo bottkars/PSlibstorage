@@ -86,11 +86,21 @@ function invoke-libStorageRequest {
     (
         [Parameter(Mandatory = $true)]$uri,
         [Parameter(Mandatory = $false)][ValidateSet('Get', 'Delete', 'Put', 'Post', 'Patch')]$Method = 'Get',
-        [Parameter(Mandatory = $false)]$ContentType = 'application/json;charset=utf-8', 
+        [Parameter(Mandatory = $false)]$ContentType = 'application/json', 
         [Parameter(Mandatory = $false)]$Body
     )
+switch ($Method)
+    {
+        default
+        {
+        $response = Invoke-RestMethod -Uri $uri -Method $Method  -SkipCertificateCheck -ContentType $ContentType
+        }
+        'Post'
+        {
+        $response = Invoke-RestMethod -Uri $uri -Method $Method  -SkipCertificateCheck -ContentType $ContentType -Body $Body
+        }
 
-    $response = Invoke-RestMethod -Uri $uri -Method $Method  -SkipCertificateCheck -ContentType $ContentType
+    }
 
 
     if ($names = $response |Get-Member -MemberType NoteProperty | Where-Object Definition -match "System.Management.Automation.PSCustomObject") {
@@ -119,4 +129,22 @@ function expand-libstorageproperty {
         }      
     }
     Write-Output $output_element    
+}
+
+function New-libStorageVolume {
+    [CmdletBinding(HelpUri = "http://pslibstorage.readthedocs.io/en/latest")]
+    Param
+    (
+        [Parameter(Mandatory = $true, Position = 1)]$libstoragehost,
+        [Parameter(Mandatory = $true, Position = 2)][string]$VolumeName,
+        [Parameter(Mandatory = $true, Position = 3)][uint32]$SizeGB,
+        [Parameter(Mandatory = $true, Position = 4)]$service,
+        [Parameter(Mandatory = $false)][string]$availabilityZone,
+        [Parameter(Mandatory = $false)]$libstorageport = 7980
+    )
+    $Jsonbody = @{"name" = $VolumeName;"size" = $SizeGB;"availabilityZone"= $availabilityZone} |ConvertTo-Json
+    Write-Verbose $Jsonbody
+    $Myself = ($MyInvocation.MyCommand.Name.Substring(14)).ToLower()
+    $uri = "https://$($libstoragehost):$($libstorageport)/$($myself)s/$service"
+    invoke-libStorageRequest -uri $uri -Method Post -Body $Jsonbody
 }
