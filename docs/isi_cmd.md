@@ -1,7 +1,7 @@
 
 ## Sample for ISILON RBAC
 
-```bash
+```
  # create RBAC group
  isi auth users create libstorage --password Password123! --enabled true
  isi auth roles create --name libstorage_roles
