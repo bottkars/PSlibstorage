@@ -1,3 +1,5 @@
+
+```
 libstorage:
  logging:
   level: info
@@ -48,4 +50,5 @@ libstorage:
 #         volumePath: /ifs/volumes
          nfsHost: 10.10.3.40
          dataSubnet: 10.10.3.0/24
-~                                     
+```
+                                     
