@@ -1,0 +1,12 @@
+site_name: PSlibstorage Documentation
+repo_url: https://github.com/bottkars/PSlibstorage
+site_author: Karsten Bott
+theme: readthedocs
+
+copyright: "PSlibstorage is licensed under the <a href='https://https://github.com/bottkars/PSlibstorage/blob/master/LICENSE'>MIT license</a>"
+pages:
+  - Home: README.md
+  - Installation: installation.md
+    - about: README.md
+    - Examples: Examples.md
+    - Fuctions:
