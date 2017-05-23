@@ -58,7 +58,7 @@ libstorage:
 ## getting started
 as long as 0.1 is not reached, please clone the repo and manually run 
 ```
-import-module pPSlibStaorage.psm1
+import-module PSlibStaorage.psm1
 ```
 
 
